@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="Role" />
+        <module name="Ticket" />
+        <module name="Harti" />
+        <module name="User" />
+        <module name="Security" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Commons" target="19" />
+      <module name="commons" target="19" />
+      <module name="Token" target="19" />
+      <module name="Tranzactii" target="19" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Commons" options="-parameters" />
+      <module name="Harti" options="-parameters" />
+      <module name="Role" options="-parameters" />
+      <module name="Security" options="-parameters" />
+      <module name="Ticket" options="-parameters" />
+      <module name="Token" options="-parameters" />
+      <module name="Tranzactii" options="-parameters" />
+      <module name="User" options="-parameters" />
+      <module name="commons" options="-parameters" />
+      <module name="demo" options="" />
+    </option>
+  </component>
+</project>

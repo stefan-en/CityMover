@@ -1,0 +1,26 @@
+create database datas;
+use datas;
+
+create table Users(
+	idUser INT NOT NULL AUTO_INCREMENT,
+	lastname VARCHAR(255) NOT NULL,
+	firstname VARCHAR(255) NOT NULL,
+	email VARCHAR(255) NOT NULL,
+	usname VARCHAR(255) NOT NULL,
+	password VARCHAR(255) NOT NULL,
+	roles VARCHAR(255) NOT NULL,
+	PRIMARY KEY (idUser)
+);
+
+create table Roles(
+	idRol INT NOT NULL AUTO_INCREMENT,
+    idUser INT NOT NULL,
+    denumire_rol varchar(255),
+    PRIMARY KEY (idRol)
+);
+
+
+select roles.name_of_role 
+from users, roles,users_roles 
+where users.id_user = users_roles.id_user
+and   roles.id_rol=users_roles.id_rol; 
