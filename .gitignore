@@ -1,7 +1,7 @@
-Frontend/node_modules
-Frontend/package-lock.json
-Frontend/package.json
-Frontend/README.md
+frontend/node_modules
+frontend/package-lock.json
+frontend/package.json
+frontend/README.md
 backend/mongo_volumes*
 backend/sql_volume_2/*
 demo/.idea/demo.iml
