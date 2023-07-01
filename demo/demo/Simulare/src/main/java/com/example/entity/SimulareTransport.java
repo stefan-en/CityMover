@@ -7,7 +7,7 @@ import java.util.Random;
 public class SimulareTransport {
     private final List<Statie> statii;
     private final List<Calator> calatori;
-    private final List<Autovehicul> autovehicule;
+    private final List<VehiculTransport> autovehicule;
 
     public SimulareTransport() {
         this.statii = new ArrayList<>();
@@ -23,7 +23,7 @@ public class SimulareTransport {
         calatori.add(calator);
     }
 
-    public void addBus(Autovehicul bus) {
+    public void addBus(VehiculTransport bus) {
         autovehicule.add(bus);
     }
 
@@ -44,7 +44,7 @@ public class SimulareTransport {
         }
 
         // Simulate buses on routes
-        for (Autovehicul bus : autovehicule) {
+        for (VehiculTransport bus : autovehicule) {
             List<Statie> route = bus.getRoute();
             for (int i = 0; i < route.size(); i++) {
                 Statie currentStation = route.get(i);

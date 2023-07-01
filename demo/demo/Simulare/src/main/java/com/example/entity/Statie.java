@@ -1,25 +1,23 @@
 package com.example.entity;
 
-public class Statie {
-    private final String name;
-    private final double latitude;
-    private final double longitude;
 
-    public Statie(String name, double latitude, double longitude) {
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Data
+@NoArgsConstructor
+@Document(collection = "statii")
+public class Statie {
+    String name;
+    Integer idStatie;
+    double latitude;
+    double longitude;
+
+    public Statie(String name, Integer idStatie, double latitude, double longitude) {
         this.name = name;
+        this.idStatie = idStatie;
         this.latitude = latitude;
         this.longitude = longitude;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public double getLatitude() {
-        return latitude;
-    }
-
-    public double getLongitude() {
-        return longitude;
     }
 }

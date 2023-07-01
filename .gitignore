@@ -2,8 +2,8 @@ bestfrontend/node_modules
 bestfrontend/package-lock.json
 bestfrontend/package.json
 bestfrontend/README.md
-backend/mongo_volumes*
-backend/sql_volume_2/*
+mongo_volume*
+sql_volume/*
 demo/.idea/demo.iml
 demo/.idea/vcs.xml
 Enache_Stefan_raport1.pdf
