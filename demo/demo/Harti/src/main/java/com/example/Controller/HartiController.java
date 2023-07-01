@@ -42,9 +42,12 @@ public class HartiController {
     public ResponseEntity<String> saveDataAuto(@RequestBody String date){
         boolean result = autovehiculService.parsareJson(date);
         if(result) {
-            return ResponseEntity.ok().body("Datele au fost parsate");
+            log.info("Date parsate");
+            return ResponseEntity.status(HttpStatus.OK).build();
+
         }else{
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Datele nu s-au procesat");
+            log.info("Date eronate");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
 }

@@ -32,14 +32,13 @@ public class AuthenticationController {
         return ResponseEntity.ok(authenticationService.authenticate(request));
 
     }
-    //@Secured({"ROLE_USER"})
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @Secured({"ROLE_USER"})
+    @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("/logout")
     public String logout(HttpServletRequest request, HttpServletResponse response) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null) {
-            LogoutHandler logoutHandler = new SecurityContextLogoutHandler();
-            logoutHandler.logout(request, response, authentication);
+            logoutService.logout(request, response, authentication);
         }
         return "redirect:/login?logout"; // redirect to login page with "logout" parameter
     }

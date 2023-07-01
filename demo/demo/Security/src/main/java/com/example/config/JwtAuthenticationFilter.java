@@ -48,7 +48,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         }
         jwt = authHeader.substring(7);
         id = jwtService.extractId(jwt);
-        roles = jwtService.getAuthorities(jwt);
+        try {
+            roles = jwtService.getAuthorities(jwt);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         username = "";//jwtService.extractUsername(jwt);
         password = "";//jwtService.extractPassword(jwt);
 

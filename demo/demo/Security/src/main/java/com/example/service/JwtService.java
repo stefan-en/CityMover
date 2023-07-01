@@ -16,6 +16,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.nio.charset.StandardCharsets;
 import java.security.Key;
 import java.util.*;
 import java.util.function.Function;
@@ -42,12 +43,6 @@ public class JwtService {
         return claimsResolver.apply(claims);
     }
     public String generateToken(User userDetails,Set<String> authorities) {
-//        List<GrantedAuthority> authorities1 = new ArrayList<>();
-//        if(authorities != null) {
-//            for (String role : authorities) {
-//                authorities1.add(new SimpleGrantedAuthority(role));
-//            }
-//        }
         String token = Jwts.builder()
                 .setSubject(userDetails.getUsername())
                 .claim("authorities",authorities)
@@ -72,15 +67,14 @@ public class JwtService {
     }
 
     private Key getSignInKey() {
-        byte[] keyBytes = Decoders.BASE64.decode(secretKey);
-        return Keys.hmacShaKeyFor(keyBytes);
+        //byte[] keyBytes = Decoders.BASE64.decode(secretKey);
+        return Keys.hmacShaKeyFor(secretKey.getBytes());
     }
 
     public List<String> getAuthorities(String jwt) {
 
             Claims body = getJWTBody(jwt);
             String username = body.getSubject();
-            String id = body.getId();
 
             List<String> authorities = (List<String>) body.get("authorities");
             log.info("userul {} has this roles {}",username,authorities);

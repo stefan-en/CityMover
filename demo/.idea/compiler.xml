@@ -9,8 +9,10 @@
         <outputRelativeToContentRoot value="true" />
         <module name="Role" />
         <module name="Ticket" />
-        <module name="Harti" />
         <module name="User" />
+        <module name="Simulare" />
+        <module name="Harti" />
+        <module name="Tickets" />
         <module name="Security" />
       </profile>
     </annotationProcessing>
@@ -27,7 +29,9 @@
       <module name="Harti" options="-parameters" />
       <module name="Role" options="-parameters" />
       <module name="Security" options="-parameters" />
+      <module name="Simulare" options="-parameters" />
       <module name="Ticket" options="-parameters" />
+      <module name="Tickets" options="-parameters" />
       <module name="Token" options="-parameters" />
       <module name="Tranzactii" options="-parameters" />
       <module name="User" options="-parameters" />

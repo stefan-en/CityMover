@@ -44,7 +44,7 @@ public class AuthenticationService {
         if (user == null) {
             throw new Exception("User not found");
         } else {
-            Set<String> roles = new HashSet<>(Set.of("ROLE_ADMIN"));
+            Set<String> roles = new HashSet<>(Set.of("ROLE_USER"));
             userService.addRoleToUser(user.getUsername(),roles.iterator().next());
             var jwtToken = jwtService.generateToken(user,roles);
             saveUserToken(jwtToken);
