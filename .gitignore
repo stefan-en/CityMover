@@ -4,8 +4,6 @@ bestfrontend/package.json
 bestfrontend/README.md
 mongo_volume*
 sql_volume/*
-demo/.idea/demo.iml
-demo/.idea/vcs.xml
 Enache_Stefan_raport1.pdf
 Enache_Stefan_raport2.pdf
 final.docx
@@ -13,3 +11,4 @@ ideeLicenta.rtf
 RaportInitial.pdf.docx
 raportIntermediar.docx
 scriptTabele.txt
+demo/.idea*

@@ -24,9 +24,4 @@ public class StartHarti{
 //            autovehiculRepository.save(new Autovehicul("13","Copou-Tudor","Copou", "Tudor", AutoType.TRAMVAI));
         };
     }
-
-//    @Override
-//    public void run(String... args) throws Exception {
-//        autovehiculRepository.save(new Autovehicul("13","Copou-Tudor","Copou", "Tudor", AutoType.TRAMVAI));
-//    }
 }

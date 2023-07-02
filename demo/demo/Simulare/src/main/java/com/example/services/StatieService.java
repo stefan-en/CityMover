@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -26,6 +28,10 @@ public class StatieService implements StatieInterface {
 
         log.info("Am salvat statia cu numele: {} si id {}.", statie.getName(),statie.getIdStatie());
         return statieRepository.save(statie);
+    }
+    @Override
+    public List<Statie> getStatii(){
+        return statieRepository.findAll();
     }
 
     public boolean parsareJson(String json){
@@ -48,9 +54,9 @@ public class StatieService implements StatieInterface {
 
 
                 Statie result = saveStatie(statie);
-                log.info("Am salvat statia cu numele: {} .", statie.getName());
-                if (result == null){
 
+                if (result == null){
+                    log.info("Aleeert !!! Am salvat statia cu numele: {} .", statie.getName());
                     salvat = false;
                 }
             }

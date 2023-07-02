@@ -1,6 +1,7 @@
 package com.example.services;
 
 
+import com.example.data.ReuniuneStatii;
 import com.example.entity.Reuniune;
 import com.example.interfaces.ReuniuneInterface;
 import com.example.repository.ReuniuneRepository;
@@ -9,6 +10,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Slf4j
 @Service
@@ -24,6 +27,13 @@ public class ReunuineService implements ReuniuneInterface {
 
         log.info("Am salvat trip_id: {}.", reuniune.getTripId());
         return reuniuneRepository.save(reuniune);
+    }
+    @Override
+    public List<ReuniuneStatii> getStatiiForTrip(){
+        List<ReuniuneStatii> re = reuniuneRepository.getStatiiForTrip();
+        for(ReuniuneStatii i : re)
+            System.out.println(i);
+        return reuniuneRepository.getStatiiForTrip();
     }
 
     public boolean parsareJson(String json){
@@ -42,9 +52,11 @@ public class ReunuineService implements ReuniuneInterface {
                 reuniune.setNumarOrdine(ordine);
                 reuniune.setStopId(stopId);
                 Reuniune result = saveReuniune(reuniune);
-                log.info("Am salvat trip_id: {} in colectia reuniune .", reuniune.getTripId());
+
 
                 if (result == null){
+                    log.info("Alert!!! Nu s-a salvat trip_id: {} in colectia reuniune .", reuniune.getTripId());
+
                     salvat = false;
                 }
             }

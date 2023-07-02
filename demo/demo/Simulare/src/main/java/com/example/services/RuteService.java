@@ -27,6 +27,7 @@ public class RuteService implements RutaInterface {
         return ruteRepository.save(ruta);
     }
 
+
     public boolean parsareJson(String json){
         ObjectMapper mapper = new ObjectMapper();
         Ruta ruta = new Ruta();
@@ -44,9 +45,10 @@ public class RuteService implements RutaInterface {
                 ruta.setNumarTraseu(numarTraseu);
 
                 Ruta result = saveRuta(ruta);
-                log.info("Am salvat ruta cu id:{}",ruta.getRouteId());
+
 
                 if (result == null){
+                    log.info("Alert!!!! Nu s-a salvat ruta cu numele:{}",ruta.getNumarTraseu());
                     salvat = false;
                 }
             }
