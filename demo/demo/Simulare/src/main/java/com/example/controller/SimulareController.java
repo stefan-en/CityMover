@@ -11,7 +11,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
@@ -23,6 +25,7 @@ public class SimulareController {
     private final StatieService statieService;
     private final ReunuineService reunuineService;
 
+    // parsare si inserate in colectia 'autovehicle'
     @PostMapping("/simulare/autovehicule")
     public ResponseEntity<String> putVehicule(@RequestBody String date){
         boolean result = vehiculTransportService.parsareJson(date);
@@ -35,6 +38,7 @@ public class SimulareController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
+    // parsare si inserate in colectia 'rute'
     @PostMapping("/simulare/rute")
     public ResponseEntity<String> putRute(@RequestBody String date){
         boolean result = ruteService.parsareJson(date);
@@ -47,6 +51,8 @@ public class SimulareController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
+
+    // parsare si inserate in colectia 'statii'
     @PostMapping("/simulare/statii")
     public ResponseEntity<String> putStatii(@RequestBody String date){
         boolean result = statieService.parsareJson(date);
@@ -59,7 +65,7 @@ public class SimulareController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
-
+    // parsare si inserate in colectia 'autovehicle'
     @PostMapping("/simulare/reuniune")
     public ResponseEntity<String> putReuniune(@RequestBody String date){
         boolean result = reunuineService.parsareJson(date);
@@ -72,21 +78,28 @@ public class SimulareController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
+    // extragere date din colectia 'reuniunestatii'
     @GetMapping("/simulare/autoRute")
     public ResponseEntity<List<VehiculRute>> getFirs(){
         List<VehiculRute> list = vehiculTransportService.getVehiculeWithRute();
         return ResponseEntity.ok().body(list);
     }
+    // extragere date din colectia 'vehiculrute'
     @GetMapping("/simulare/reuniuneStatii")
     public ResponseEntity<List<ReuniuneStatii>> getListStatii(){
         List<ReuniuneStatii> list = reunuineService.getStatiiForTrip();
         return ResponseEntity.ok().body(list);
     }
-
+    //datele final procesate in colectia 'final'
     @GetMapping("/simulare/agregate")
     public ResponseEntity<List<DataAgregate>> getLisData(){
         List<DataAgregate> list = vehiculTransportService.getColectieRezultatWithStatii();
         return ResponseEntity.ok().body(list);
+    }
+    @GetMapping("/simulare/start")
+    public ResponseEntity<List<Map<String,String>>> getDataSimulate(){
+        List<Map<String,String>> data = vehiculTransportService.Simulare();
+        return ResponseEntity.ok().body(data);
     }
 
 

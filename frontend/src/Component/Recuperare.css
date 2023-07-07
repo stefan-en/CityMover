@@ -1,0 +1,84 @@
+
+.container {
+    margin-top: 2cm;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #20b1ff; 
+  }
+  
+  .form-group {
+    margin-bottom: 10px;
+  }
+  
+  .input-container {
+    margin-left: 22cm;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+    .input-container2 {
+        margin-left: 22cm;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .input-container3 {
+    margin-left: 25cm;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+  
+  .login-button {
+    padding: 12px 20px;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 10px;
+  }
+  
+  .login-button:hover {
+    background-color:  #4e7fb4;
+  }
+  .form-group-label {
+    margin-left: 3cm;
+    margin-bottom: 10px; /* Adaugă spațiu sub etichetă */
+  }
+  .par{
+    margin-left: -2cm;
+  }
+  .par2{
+    margin-left: -2cm;
+  }
+  .verification-input {
+    width: 80%;
+    margin: 0 auto; /* Centrează inputul în container */
+  }
+  .button-container2{
+    margin-top: 1cm;
+    margin-left: -5cm;
+  }
+  .button-container3{
+    margin-top: 0.5cm;
+    margin-left: -4cm;
+  }
+  .login-1{
+    margin-left: 3.5cm;
+    padding: 12px 20px;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 10px;
+  }
+  .login-1:hover{
+    background-color:  #4e7fb4;
+  }

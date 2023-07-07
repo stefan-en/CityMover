@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
@@ -26,7 +27,7 @@ public class HartiController {
         List<Autovehicul> ticketEntityList = null;
         ticketEntityList = autovehiculService.getAutovehiculByType(AutoType.TRAMVAI);
 
-        List<AutovehiculDTO> mappedAuto = ticketEntityList.stream().map(ticket -> modelMapper.map(ticket, AutovehiculDTO.class)).toList();
+        List<AutovehiculDTO> mappedAuto = ticketEntityList.stream().map(ticket -> modelMapper.map(ticket, AutovehiculDTO.class)).collect(Collectors.toList());
         return ResponseEntity.ok().body(mappedAuto);
     }
     @GetMapping("/harti/autovehicule/autobuze")
@@ -35,7 +36,7 @@ public class HartiController {
         List<Autovehicul> ticketEntityList = null;
         ticketEntityList = autovehiculService.getAutovehiculByType(AutoType.AUTOBUZ);
 
-        List<AutovehiculDTO> mappedAuto = ticketEntityList.stream().map(ticket -> modelMapper.map(ticket, AutovehiculDTO.class)).toList();
+        List<AutovehiculDTO> mappedAuto = ticketEntityList.stream().map(ticket -> modelMapper.map(ticket, AutovehiculDTO.class)).collect(Collectors.toList());
         return ResponseEntity.ok().body(mappedAuto);
     }
     @PostMapping("/harti/autovehicule")

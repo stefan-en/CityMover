@@ -9,6 +9,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -25,6 +28,10 @@ public class RuteService implements RutaInterface {
 
         log.info("Am salvat ruta cu id: {} si numele {}.", ruta.getRouteId(),ruta.getNumeTraseu());
         return ruteRepository.save(ruta);
+    }
+    @Override
+    public List<String>  getRute(){
+        return extractName(ruteRepository.findAllByNumeTraseuNotNull());
     }
 
 
@@ -63,6 +70,81 @@ public class RuteService implements RutaInterface {
         }
         else{
             return true;
+        }
+    }
+    public List<String> extractName(List<String> documents) {
+        List<String> routeNames = new ArrayList<>();
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        for (String document : documents) {
+            try {
+                JsonNode jsonNode = objectMapper.readTree(document);
+                String numeTraseu = jsonNode.get("numeTraseu").asText();
+                if (numeTraseu.equals( "3 e") || numeTraseu.equals("")){
+                continue;
+                }
+                else {
+                    routeNames.add(mappedNameOfRoute(numeTraseu));
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        return routeNames;
+    }
+    private static String mappedNameOfRoute(String ruta){
+        switch (ruta){
+            case "101" -> {
+                return  "Rond Targu Cucu - Dobrovat";
+            }
+            case "102" ->{
+                return"Rond Targu Cucu - Aroneanu";
+            }
+            case "104" -> {
+                return "Aroneanu - Rediu Aldei";
+
+            }
+            case "202" ->{
+                return"Podu Ros - Paun";
+            }
+            case "401" ->{
+                return"Tatarasi Sud - Rusenii Noi";
+            }
+            case "501" ->{
+                return"Sala Polivalenta - Vorovesti";
+            }
+            case "503" ->{
+                return "CUG I - Valea Adanca";
+            }
+            case "601" ->{
+                return  "Rond Targu Cucu - Popricani";
+            }
+            case "701" ->{
+                return "Copou - Horlesti";
+            }
+            case "702" ->{
+                return  "Copou - Rediu";
+
+            }
+            case "801" ->{
+                return  "Rond Targu Cucu - Goruni via Tomesti";
+
+            }
+            case "803" ->{
+               return "Rond Tutora - Opriseni via Tomesti";
+            }
+            case "9b" ->{
+                return "Tg. Cucu - Podu Roș - CUG 2";
+            }
+            case "3 e" -> {
+                return  "";
+
+            }
+
+            default -> {
+                return ruta;
+            }
         }
     }
 }

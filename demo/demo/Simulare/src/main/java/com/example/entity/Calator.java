@@ -1,12 +1,17 @@
 package com.example.entity;
 
+import java.util.List;
+
 public class Calator {
     private final String id;
-    private final Statie sourceStation;
-    private final Statie destinationStation;
 
-    public Calator(String name, Statie sourceStation, Statie destinationStation) {
+    private final String sourceStation;
+
+    private final String destinationStation;
+
+    public Calator(String name, String sourceStation, String destinationStation) {
         this.id = name;
+
         this.sourceStation = sourceStation;
         this.destinationStation = destinationStation;
     }
@@ -15,11 +20,11 @@ public class Calator {
         return id;
     }
 
-    public Statie getSourceStation() {
+    public String getSourceStation() {
         return sourceStation;
     }
 
-    public Statie getDestinationStation() {
+    public String getDestinationStation() {
         return destinationStation;
     }
 }

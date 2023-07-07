@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.*;
 
 
@@ -161,6 +162,14 @@ public class AutovehiculService implements AutovehiculInterface {
                 changeData(numeTraseu,autovehicul);
                 return autovehicul;
             }
+            case "9b" -> {
+                String numeTraseu = "Tg. Cucu - Podu Roș - CUG 2";
+                changeData(numeTraseu,autovehicul);
+                return autovehicul;
+            }
+            case "3 e" -> {
+                return  null;
+            }
 
             default -> {
                 return autovehicul;
@@ -174,4 +183,5 @@ public class AutovehiculService implements AutovehiculInterface {
         autovehicul.setStatieInitiala(routeLongNameWords[0]);
         autovehicul.setStatieFinala(routeLongNameWords[routeLongNameWords.length - 1]);
     }
+
 }

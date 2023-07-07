@@ -1,0 +1,249 @@
+/* Add the following CSS to improve the appearance of the login box */
+
+/* Apply general styles */
+.page {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.75em;
+  }
+  
+  .cover {
+    background-color: white;
+    width: 40%;
+    height: 50%;
+    margin: 10vh auto 0;
+    position: relative;
+    border-radius: 1em;
+    box-shadow: 0 0.188em 1.550em rgb(156, 156, 156);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .login-button {
+    padding: 12px 20px; /* Adjust padding to make the button visually appealing */
+    border-radius: 4px;
+    font-size: 16px; /* Increase font size for better visibility */
+    background-color: #324738; /* You can change the color to your preference */
+    color: #fff; /* Set text color to contrast with the background */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 30px;
+    margin-left:80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .login-button:hover {
+    background-color: #2c8d48; /* Darker shade when hovering */
+  }
+  
+  /* Optional: Add some space between form elements */
+  .form-group {
+    margin-bottom: 10px;
+    margin-left: -10px;
+  }
+  
+  
+  /* Apply styles to the title "LOGIN" */
+  .cover h1,
+  .cover label,
+  input,
+  .cover p  {
+    color: #333; /* Darker color for the title */
+    font-size: 2em; /* Increase font size */
+    margin-bottom: 20px; /* Add some spacing below the title */
+    font-size: 1.5em;
+  }
+  
+  /* Apply styles to the input fields */
+  input {
+    border: none;
+    background-color: #e5e2e2;
+    width: 80%;
+    border-radius: 0.25em;
+    text-align: center;
+    padding: 12px 8px; /* Increase padding for better spacing */
+    font-size: 0.9em; /* Increase font size for better readability */
+    margin-bottom: 10px; /* Add spacing between input fields */
+  }
+  .byt {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    margin-left: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.3em;
+    padding: 3px 5px; /* Add padding to the buttons */
+  }
+  .byt2 {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    margin-left: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.3em;
+    padding: 3px 5px; /* Add padding to the buttons */
+  }
+  .byt3{
+    margin-top: 15px;
+    margin-bottom: 10px;
+    margin-left: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.3em;
+    padding: 3px 5px; /* Add padding to the buttons */
+  }
+
+
+  input:focus {
+    outline-color: #20b1ff; /* Change focus outline color to a blue shade */
+  }
+  
+  /* Apply styles to the login button */
+  .bost {
+    margin: 0 auto; /* Center the button */
+    padding: 12px 40px; /* Increase padding for better appearance */
+    border: none;
+    background-color: #20b1ff; /* Blue background color */
+    color: white; /* Text color */
+    font-size: 1em;
+    cursor: pointer;
+    transition: 0.3s; /* Add a smooth transition effect */
+    margin-top: 20px; /* Add some spacing above the button */
+    margin-bottom: 15px;
+  }
+  
+  .bost:hover {
+    background-color: #1b85e6; /* Darker blue on hover */
+  }
+  
+  /* Apply styles to the "Don't have an account?" and "Forgot your password?" links */
+  .cover p {
+    margin: 0; /* Remove default margin */
+    font-size: 0.9em; /* Increase font size for better readability */
+  }
+  
+  .cover .byt {
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none; /* Remove underline */
+    margin-left: 10px; /* Add spacing to the left of the links */
+  }
+  .cover .byt2 {
+    background-color: #007bff;
+    color: #fff;
+
+    text-decoration: none; /* Remove underline */
+    margin-left: 45px; /* Add spacing to the left of the links */
+  }
+  
+  .cover .byt:hover {
+    background-color: #4e7fb4;
+  }
+  .cover .byt2:hover {
+    background-color: #4e7fb4;
+  }
+  .cover .byt3 {
+    color: #20b1ff; /* Blue color for the links */
+    text-decoration: none; /* Remove underline */
+    margin-left: -5px; /* Add spacing to the left of the links */
+  }
+ 
+  .button-container {
+    display: flex;
+    flex-direction: column; /* Stack the buttons vertically */
+    align-items: center; /* Center the buttons horizontally */
+    margin-top: 10px; /* Add some top margin to separate from the input field */
+  }
+  
+  /* Add spacing between the buttons */
+  .button-space {
+    height: 5px; /* Adjust the height as needed for spacing */
+  }
+  .input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .loginSpace{
+    margin-top: 25px;
+    margin-bottom: -80px;
+  }
+  .links-container {
+    /* display: flex; */
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px; /* Add some top margin to separate from the input field */
+    margin-left: 20px;
+    font-size: 1.4em;
+  }
+  
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+  }
+  .ceva {
+    margin-left: 40px;
+  }
+  .ceva2 {
+    margin-left: 30px;
+  }
+
+  .form-group-email {
+    margin-bottom: 10px;
+    margin-left: 70px;
+  }
+  
+  .fp-inputField {
+    border: none;
+    background-color: #e5e2e2;
+    width: 80%;
+    border-radius: 0.25em;
+    text-align: center;
+    padding: 12px 8px;
+    font-size: 0.9em;
+    margin-bottom: 10px;
+  }
+  
+  /* Add styles for the buttons in ForgotPassword component */
+  .button-container2 {
+    margin-left: -90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -10px;
+  }
+  
+  .button-space {
+    margin-top: -20px;
+    height: 5px;
+  }
+  
+  .buttonul {
+    margin: 0 auto;
+    padding: 12px 40px;
+    border: none;
+    background-color: #20b1ff;
+    color: white;
+    font-size: 1em;
+    border-radius: 0.5em;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 20px;
+    margin-bottom: 15px;
+  }
+  
+  .fp-buttonul:hover {
+    background-color: #1b85e6;
+  }

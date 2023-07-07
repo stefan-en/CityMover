@@ -12,4 +12,6 @@ public interface VehiculTransportInterface {
     List<VehiculRute> getVehiculeWithRute();
 
     List<DataAgregate> getColectieRezultatWithStatii();
+
+    List<String> getStatii(String numeRuta);
 }

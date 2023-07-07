@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 @Service
 @RequiredArgsConstructor
@@ -22,6 +23,7 @@ public class UserService implements UserInterface {
     private final UserRepository userRepository;
 
     private final RoleRepository roleRepository;
+    private final EmailService emailService;
 
     @Override
     public List<User> getSongs() {
@@ -73,5 +75,22 @@ public class UserService implements UserInterface {
         else{
             return "User-ul not found";
         }
+    }
+    public void updatePassword(String email, String password){
+        User user = userRepository.findByEmail(email);
+
+        if(user != null){
+            user.setPassword(password);
+            userRepository.save(user);
+        }
+        else {
+            throw new IllegalArgumentException("Utilizatorul nu există.");
+        }
+    }
+    public Integer getCodeRset(String email){
+        Random random = new Random();
+        Integer num = random.nextInt(1000,9999 );
+        emailService.sendEmailAlert(email,num);
+        return num;
     }
 }

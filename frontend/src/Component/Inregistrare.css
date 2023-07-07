@@ -1,0 +1,97 @@
+/* register.css */
+
+.register-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    margin-top: 20px; /* Adaugă spațiu în partea de sus */
+  }
+  
+  .register-form {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%; /* Lățimea formularului */
+  }
+  
+  input:focus {
+    outline-color: #20b1ff; /* Change focus outline color to a blue shade */
+  }
+  .register-form h1 {
+    margin-bottom: 20px; /* Adaugă spațiu la primul titlu din formular */
+    text-align: center; /* Aliniază titlul la centru */
+  }
+  
+  .register-form label {
+    color: #20b1ff;
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Aliniază etichetele câmpurilor la centru */
+    margin-bottom: 10px;
+  }
+  .register-form input {
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+  }
+  
+  .register-form .password-error {
+    margin-left: 30px;
+    color: red;
+    margin-bottom: 10px;
+  }
+  
+  .register-form button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 35px;
+  }
+  
+  .register-form button:hover {
+    background-color: #4e7fb4;
+  }
+  
+  .register-form .back-button {
+    margin-top: 20px;
+    font-size: 16px;
+    background-color: transparent;
+    color: #ffffff;
+    background-color: #007bff;
+    cursor: pointer;
+    justify-content: center;
+    display: flex;
+    margin-bottom: 10px;
+    margin-left: 10px;
+  }
+  
+  .RegisterSpace {
+    margin-top: 40px;
+    margin-bottom: 20px;
+  }
+  
+  .register-form .button-container {
+    display: flex;
+    justify-content: center; /* Aliniază butoanele în centru */
+  }
+  .byt {
+    margin-top: 15px;
+    margin-bottom: 10px; /* Add space between the input fields */
+    margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+  }

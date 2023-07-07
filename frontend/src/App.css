@@ -1,29 +1,34 @@
 
-
-
 .container {
   max-height: 50px; /* inaltimea maxima a containerului */
-  overflow:scrollS; /* activarea scrollbar-ului */
+  overflow:scroll; /* activarea scrollbar-ului */
+  font-size: 1.5em;
+}
+.ticket-image {
+  width: 400px; /* Modificați această valoare după preferințele dvs. */
+  height: auto;
+}
+.App {
+  background-color: aquamarine; /* Modificați această valoare cu culoarea dorită */
 }
 
+
 .box-container {
+  
+  margin-top: 0cm;
+  color: aquamarine;
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .box {
-  width: 200px;
-  height: 200px;
-  border: 2px solid #333;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
+  /* Stilurile existente ale boxului */
+  width: 400px; /* Modificați această valoare după preferințele dvs. */
+  margin: 60px;
 }
-
 .box.selected {
-  background-color: #333;
+  background-color: #e4d7d7;
 }
 
 .wallet-table {
@@ -89,6 +94,7 @@
 .App {
   text-align: center;
   height: 100vh;
+  font-size: 1.5em;
 }
 
 .App-logo {
@@ -128,4 +134,27 @@
 
 .text-left {
   text-align: left;
+}
+.payment-form {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.paypal-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.hed{
+  margin-left: 500px;
+}
+.Modal {
+  /* Stiluri pentru modal */
+}
+
+.Modal-content {
+  /* Stiluri pentru conținutul modal */
 }

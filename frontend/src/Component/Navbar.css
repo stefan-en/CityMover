@@ -4,7 +4,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     position: sticky;
     top: 0;
     z-index: 999;
@@ -14,7 +14,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80px;
+    height: 50px;
     max-width: 1500px;
   }
   
@@ -34,8 +34,9 @@
     font-size: 1.8rem;
   }
   
-  .nav-menu {
-    display: grid;
+   .nav-menu {
+    display: flex;
+    align-items: center;
     grid-template-columns: repeat(4, auto);
     grid-gap: 10px;
     list-style: none;
@@ -43,6 +44,13 @@
     width: 60vw;
     justify-content: end;
     margin-right: 2rem;
+    position: relative
+  } 
+
+
+  
+  .nav-item-acasa {
+    margin-right: 40px; /* Spațiere între elementele "Acasă" și celelalte elemente */
   }
   
   .nav-item {
@@ -84,15 +92,18 @@
     .nav-menu {
       display: flex;
       flex-direction: column;
+      align-items: center; /* Aducem elementele la centru pe verticală */
+      justify-content: center; /* Aducem elementele la centru pe orizontală */
       width: 100%;
       height: 90vh;
       position: absolute;
-      top: 80px;
-      left: -100%;
+      top: 80px; /* Adăugăm distanța dintre meniu și partea superioară a paginii */
+      left: 0;
+      background: #242222;
       opacity: 1;
       transition: all 0.5s ease;
+      z-index: 1;
     }
-  
     .nav-menu.active {
       background: #242222;
       left: 0;

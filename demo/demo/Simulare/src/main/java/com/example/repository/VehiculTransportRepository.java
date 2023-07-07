@@ -28,4 +28,5 @@ public interface VehiculTransportRepository extends MongoRepository<VehiculTrans
             "{$out: final}"
         })
         List<DataAgregate> getColectieRezultatWithStatii();
-        }
+
+}

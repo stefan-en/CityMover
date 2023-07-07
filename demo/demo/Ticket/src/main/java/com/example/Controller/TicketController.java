@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
@@ -33,8 +34,11 @@ public class TicketController {
         List<TicketEntity> ticketEntityList = null;
         ticketEntityList = ticketService.getMax5Tickets(id);
 
-        List<TicketEntityDTO> mappedTickets  = ticketEntityList.stream().map(ticket -> modelMapper.map(ticket, TicketEntityDTO.class)).toList();
+        List<TicketEntityDTO> mappedTickets  = ticketEntityList.stream()
+                .map(ticket -> modelMapper.map(ticket, TicketEntityDTO.class))
+                .collect(Collectors.toList());
         return ResponseEntity.ok().body(mappedTickets);
+
     }
     @PostMapping("/tickets/buy")
     public ResponseEntity<String> buyTicket(@RequestBody TicketEntity ticket){

@@ -57,4 +57,17 @@ public class UserController {
         userService.addRoleToUser(nameOfUser, role);
         return ResponseEntity.ok().build();
     }
+    @PostMapping("/users/updatePassword")
+    public ResponseEntity<Void> updatePassword(@RequestParam("email") String email,
+                                 @RequestParam("newPassword") String newPassword) {
+        userService.updatePassword(email, newPassword);
+        return ResponseEntity.ok().build();
+    }
+    @GetMapping("/users/emailcode")
+    public ResponseEntity<Map<String, Integer>> getCode(@RequestParam("email") String email){
+        Integer cod = userService.getCodeRset(email);
+        Map<String, Integer> response = new HashMap<>();
+        response.put("cod", cod);
+        return ResponseEntity.ok().body(response);
+    }
 }
