@@ -8,14 +8,28 @@
   width: 400px; /* Modificați această valoare după preferințele dvs. */
   height: auto;
 }
-.App {
-  background-color: aquamarine; /* Modificați această valoare cu culoarea dorită */
+
+.dop{
+  margin-left: 25cm;
+}
+.scroll-container {
+  background: rgba(255, 255, 255, 0.5);
+  padding: 112px;
+  overflow: auto;
 }
 
+.scroll-content {
+  min-width: 400px;
+  max-height: calc(100vh - 200px);
+}
 
+.scroll-inner {
+
+  overflow-y: auto;
+}
 .box-container {
   
-  margin-top: 0cm;
+  margin-left: 30cm;
   color: aquamarine;
   display: flex;
   flex-wrap: wrap;

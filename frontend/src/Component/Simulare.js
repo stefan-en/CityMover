@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Cookies from 'js-cookie';
 import {useNavigate} from 'react-router-dom'
-
+import './Simulare.css'
 function Simulare() {
   const [, setResponse] = useState([]);
   const [finalData, setFinalData] = useState([]);
@@ -115,6 +115,7 @@ function Simulare() {
 
     setShowFirstButton(false);
     setShowSecondButton(true);
+    setShowLastButton(false);
   };
 
   const handleSecondButtonClick= async ()=> {
@@ -155,6 +156,7 @@ function Simulare() {
         } catch (error) {
           console.error("Eroare:", error);
         }
+        setShowSecondButton(false);
         setShowLastButton(true);
       };
       const handleLastButtonClick= async ()=> {
@@ -173,38 +175,47 @@ function Simulare() {
         } catch (error) {
           console.error("Eroare:", error);
         }
-        setShowSecondButton(false);
-        setShowLastButton(true);
+        setShowLastButton(false);
       };
-  return (
-    <div style={{ display: 'flex', justifyContent: 'center' }}>
-      {showFirstButton && (
-        <button className="info-button" onClick={fetchData}>Cautati informatii</button>
-      )}
-
-      {showSecondButton && (
-        <button className="info-button" onClick={handleSecondButtonClick}>Al doilea buton</button>
-      )}
-      {showLastButton && (
-        <button className="info-button" onClick={handleLastButtonClick}>Al trilea buton</button>
-      )}
-
-        {finalData && Object.keys(finalData).length > 0 && (
-        <div>
-          {Object.entries(finalData).map(([key, value]) => (
-            <ul key={key}>
-              {Object.entries(value).map(([k, v]) => (
-                <li key={k}>
-                  {key}:{v}
-                </li>
-              ))}
-            </ul>
-          ))}
+      return (
+        <div className="dop" style={{ display: 'flex', justifyContent: 'center' }}>
+          {showFirstButton && (
+            <button className="info-button" onClick={fetchData}>Cautati informatii</button>
+          )}
+      
+          {showSecondButton && (
+            <button className="info-button" onClick={handleSecondButtonClick}>Proceseaza datele obtinute</button>
+          )}
+      
+          {showLastButton && (
+            <button className="info-button" onClick={handleLastButtonClick}>Afiseaza datele obtinute</button>
+          )}
+      
+          {finalData && Object.keys(finalData).length > 0 && (
+            <div className="scroll-container" style={{ background: 'rgba(255, 255, 255, 0.9)', padding: '10px' }}>
+              <div className="scroll-content">
+                <table style={{ borderCollapse: 'collapse' }}>
+                  <tbody>
+                    {Object.entries(finalData).map(([key, value]) => (
+                      <tr key={key}>
+                        <td style={{ border: '1px solid black', padding: '8px', maxWidth: '300px', overflow: 'hidden', whiteSpace: 'nowrap' }}>{key}</td>
+                        <td style={{ border: '1px solid black', padding: '8px', maxWidth: '300px', overflow: 'hidden' }}>
+                          <div className="scroll-inner">
+                            {Object.entries(value).map(([k, v]) => (
+                              <div key={k} style={{ marginBottom: '8px' }}>{v}</div>
+                            ))}
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
         </div>
-      )}
-
-    </div>
-  );
-}
+      );
+      
+};
 
 export default Simulare;

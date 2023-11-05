@@ -23,8 +23,8 @@ const Plata = () => {
           <h2 className='hed'>Formular de plată</h2>
           <div className="paypal-button-container">
             <PayPalButton
-              amount="10.00" // Specificați suma corespunzătoare biletului dvs.
-              currency="USD" // Specificați valuta corespunzătoare
+              // Specificați suma corespunzătoare biletului dvs.
+              currency="RON" // Specificați valuta corespunzătoare
               onSuccess={handlePaymentSuccess}
               onError={handlePaymentError}
               onCancel={handlePaymentCancel}

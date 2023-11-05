@@ -1,24 +1,42 @@
 
 .container {
     margin-top: 2cm;
+    margin-left: 10cm;
     display: flex;
     flex-direction: column;
     align-items: center;
     color: #20b1ff; 
   }
+  .form-container {
+    background-color: #fff;
+    margin-left: 25cm;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 400px; /* Ajustează valoarea la dimensiunea dorită */
+  }
   
-  .form-group {
+  .form-group12 {
     margin-bottom: 10px;
+    margin-left: 3cm;
+  }
+  .form-group2 {
+    margin-bottom: 10px;
+    margin-left:  2cm;
+  }
+
+  .input-container12 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   
   .input-container {
-    margin-left: 22cm;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
     .input-container2 {
-        margin-left: 22cm;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -29,8 +47,21 @@
     flex-direction: column;
     align-items: center;
 }
+
+.login-button3 {
+  padding: 12px 20px;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 10px;
+  margin-left: -1cm;
+}
   
-  .login-button {
+  .login-button1 {
     padding: 12px 20px;
     border-radius: 4px;
     font-size: 16px;
@@ -40,13 +71,14 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
     margin-bottom: 10px;
+    margin-left: 5cm;
   }
   
   .login-button:hover {
     background-color:  #4e7fb4;
   }
   .form-group-label {
-    margin-left: 3cm;
+    margin-left: 2cm;
     margin-bottom: 10px; /* Adaugă spațiu sub etichetă */
   }
   .par{
@@ -57,7 +89,7 @@
   }
   .verification-input {
     width: 80%;
-    margin: 0 auto; /* Centrează inputul în container */
+    margin-left: 1cm; /* Centrează inputul în container */
   }
   .button-container2{
     margin-top: 1cm;
@@ -65,7 +97,7 @@
   }
   .button-container3{
     margin-top: 0.5cm;
-    margin-left: -4cm;
+    margin-left: -2cm;
   }
   .login-1{
     margin-left: 3.5cm;

@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react';
+import {useNavigate} from 'react-router-dom'
 import Cookies from 'js-cookie';
 import QRCode from 'qrcode.react';
-import './Acasa.css';
+import './Portofel.css';
 
 const Wallet = () => {
-
   const [walletData, setWalletData] = useState([]);
   const [userId, setUserId] = useState(null);
   const [qrCode, setQRCode] = useState('');
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
+  
 
   useEffect(() => {
     fetchUserId();
@@ -21,15 +23,22 @@ const Wallet = () => {
       fetchWalletData();
     }
   }, [userId]);
+  var cookie_username = Cookies.get('username')
+ 
 
   const fetchUserId = () => {
+    if (!cookie_username) {
+      
+      alert("Trebuie să fiți conectat pentru a vizualiza contul.");
+      navigate("/login");
+      return; 
+    }
     const cookieUsername = Cookies.get('username');
     fetch(`http://localhost:8091/api/v1/service/user/${cookieUsername}`, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' }
     })
       .then(response => {
-        console.log(response)
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -94,11 +103,11 @@ const Wallet = () => {
   };
 
   if (isLoading) {
-    return <div>Se cauta datele dumneavoastra despre biletele cumparate anterior...</div>;
+    return <div className="loading">Se cauta datele dumneavoastra despre biletele cumparate anterior...</div>;
   }
 
   if (error) {
-    return <div>Eroare: {error}</div>;
+    return <div className="error">Eroare: {error}</div>;
   }
 
   return (
@@ -121,7 +130,7 @@ const Wallet = () => {
               <td>{transaction.createDate.split('T')[0]} {transaction.createDate.split('T')[1].split('.')[0]}</td>
               <td>{transaction.expireDate.split('T')[0]} {transaction.expireDate.split('T')[1].split('.')[0]}</td>
               <td>
-                <button onClick={() => generateQRCode(transaction.createDate, transaction.expireDate)}>Generate QR Code</button>
+                <button className="generate-button" onClick={() => generateQRCode(transaction.createDate, transaction.expireDate)}>Generate QR Code</button>
               </td>
             </tr>
           ))}

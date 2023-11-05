@@ -8,6 +8,8 @@ import android.util.Log
 import androidx.core.app.ActivityCompat
 import android.view.SurfaceHolder
 import android.view.SurfaceView
+import android.view.View
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
@@ -21,21 +23,36 @@ import com.google.android.gms.vision.barcode.BarcodeDetector
 import java.io.IOException
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import java.util.logging.Handler
 
 
 class ScanActivity : AppCompatActivity() {
     var surfaceView: SurfaceView? = null
     var txtBarcodeValue: TextView? = null
+    var backButtonValue: Button?=null
     private var barcodeDetector: BarcodeDetector? = null
     private var cameraSource: CameraSource? = null
-    private val REQUEST_CAMERA_PERMISSION = 201
 
+    private lateinit var resultTextView: TextView
+    private val REQUEST_CAMERA_PERMISSION = 201
+    private val handler = android.os.Handler()
+    private val scanDuration = 5000L // 5 seconds
+    private var isScanning = true
+
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scan)
+        resultTextView = findViewById(R.id.textView2)
 
         surfaceView = findViewById(R.id.surfaceView)
         txtBarcodeValue = findViewById(R.id.textView2)
+         backButtonValue = findViewById<View>(R.id.Inapoi) as Button?
+
+        backButtonValue?.setOnClickListener {
+            onBackPressed()
+        }
+
 
         initScan()
     }
@@ -92,9 +109,9 @@ class ScanActivity : AppCompatActivity() {
             }
 
             @RequiresApi(Build.VERSION_CODES.O)
-            override  fun receiveDetections(detections: Detections<Barcode>) {
+            override fun receiveDetections(detections: Detections<Barcode>) {
                 val barcodes = detections.detectedItems
-                if (barcodes.size() > 0) {
+                if (barcodes.size() > 0 && isScanning) {
                     for (i in 0 until barcodes.size()) {
                         val barcode = barcodes.valueAt(i)
                         Log.d("Barcode", "Value: ${barcode.displayValue}")
@@ -102,29 +119,47 @@ class ScanActivity : AppCompatActivity() {
                             txtBarcodeValue?.text = barcode.displayValue
                         }
 
-                        var datas =  extractTicketData(barcode.displayValue)
+                        var datas = extractTicketData(barcode.displayValue)
                         val pattern = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")
                         val creationDateTime = LocalDateTime.parse(datas?.creationDate, pattern)
                         val expirationDateTime = LocalDateTime.parse(datas?.expirationDate, pattern)
 
-                        if (expirationDateTime <= creationDateTime){
+                        if (expirationDateTime <= creationDateTime) {
                             runOnUiThread {
-                                txtBarcodeValue?.text = "INVALID"
+                                txtBarcodeValue?.text = ""
+                                showResult(false)
+                            }
+                        } else {
+                            runOnUiThread {
+                                txtBarcodeValue?.text = ""
+                                showResult(true)
                             }
                         }
-                        else{
-                            runOnUiThread {
-                            txtBarcodeValue?.text = "VALID"
-                        }
-
-                        }
-
                     }
 
+                    // Stop scanning for scanDuration milliseconds
+                    isScanning = false
+                    handler.postDelayed({
+                        isScanning = true
+                    }, scanDuration)
                 }
             }
         })
 
+    }
+    private fun showResult(isValid: Boolean) {
+        resultTextView.text = if (isValid) "VALID" else "INVALID"
+        resultTextView.setBackgroundColor(if (isValid) resources.getColor(android.R.color.holo_green_light) else resources.getColor(android.R.color.holo_red_light))
+
+        resultTextView.textSize = 180f // Dimensiunea textului în sp
+        resultTextView.setPadding(16, 0, 16, 8)
+
+        // Opriți scanarea și configurați redirecționarea către pagina principală după 3 secunde
+        isScanning = false
+        handler.postDelayed({
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+        }, 5000) // 3 secunde (3000 milisecunde)
     }
     fun extractTicketData(ticketString: String): TicketData? {
         val ticketRegex = """Ticket Creation Date: (\d{2}/\d{2}/\d{4} \d{2}:\d{2})\nTicket Expiration Date: (\d{2}/\d{2}/\d{4} \d{2}:\d{2})\nValidity: ([A-Z]+)""".toRegex()

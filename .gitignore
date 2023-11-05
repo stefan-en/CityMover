@@ -13,4 +13,8 @@ raportIntermediar.docx
 scriptTabele.txt
 demo/.idea*
 frontend/.env.local
-demo/demo/User/src/main/resources
+demo/User/src/main/resources*
+.vscode
+scriptTabele.txt
+EnacheStefanDoc
+Arhitectura.drawios

@@ -75,11 +75,11 @@ function Navbar() {
                 Rute
               </Link>
             </li>
-            <li className='nav-item'>
+            {/* <li className='nav-item'>
               <Link to='/maps' className='nav-links' onClick={closeMobileMenu}>
                 Harta
               </Link>
-            </li>
+            </li> */}
             <li className='nav-item'>
               <Link to='/simulare' className='nav-links' onClick={closeMobileMenu}>
                 Simulare

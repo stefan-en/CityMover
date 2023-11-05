@@ -96,16 +96,17 @@ const Recuperare = () => {
 
 
   return (
-    <div className="container">
+  <div className="container">
+    <div className="form-container">
       {!emailSent && !passwordReset && (
-        <form className="input-container" onSubmit={handleEmailSubmit}>
+        <form className="input-container12" onSubmit={handleEmailSubmit}>
           <div className="form-group">
             <label>Email:</label>
             <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
           </div>
           <div className="button-container">
-            <button className="login-button" type="submit">Trimite email de resetare</button>
-            <button className="login-button" onClick={handleBack}>Înapoi</button>
+            <button className="login-button3" type="submit">Trimite email de resetare</button>
+            <button className="login-button3" onClick={handleBack}>Înapoi</button>
           </div>
         </form>
       )}
@@ -116,20 +117,19 @@ const Recuperare = () => {
             <input className="verification-input" type="text" value={verificationCode} onChange={(e) => setVerificationCode(e.target.value)} />
           </div>
           <div className="button-container2">
-            <button className="login-button" type="submit">Verifică codul</button>
-            <button className="login-button" onClick={handleBack}>Înapoi</button>
+            <button className="login-button1" type="submit">Verifică codul</button>
+            <button className="login-button1" onClick={handleBack}>Înapoi</button>
           </div>
         </form>
       )}
       {emailSent && passwordReset && (
         <form className="input-container" onSubmit={handlePasswordSubmit}>
           <label className='par'>Noua parolă:</label>
-          <div className="form-group">
+          <div className="form-group2">
             <input type="password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} />
           </div>
           <label className='par2'>Confirmă parola:</label>
-          <div className="form-group">
-            
+          <div className="form-group2">
             <input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
           </div>
           <div className="button-container3">
@@ -139,7 +139,9 @@ const Recuperare = () => {
         </form>
       )}
     </div>
-  );
+  </div>
+);
+
   
 };
 export default Recuperare;

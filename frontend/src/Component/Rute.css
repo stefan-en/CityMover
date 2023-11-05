@@ -1,38 +1,113 @@
+.container {
+  min-width: 250px;
+  min-height: 500px;
+  margin-left: 1cm;
+  overflow-y: auto; /* Enable vertical scrollbar */
+  scrollbar-width: thin; /* Set the width of the scrollbar */
+  scrollbar-color: #ccc #f2f2f2; /* Set the color of the scrollbar */
+  opacity: 0.9;
+}
+
+.container::-webkit-scrollbar {
+  width: 12px;
+}
+
+.wallet-table tbody tr:hover {
+  cursor: pointer;
+}
+
+/* Handle */
+.container::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 6px;
+}
+
+/* Handle on hover */
+.container::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
+}
+
+/* Track background */
+.container::-webkit-scrollbar-track {
+  background: #f2f2f2;
+}
+
+.wallet-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  table-layout: fixed; /* Fix table layout */
+}
+
+
+.info-button-large {
+  padding: 12px 24px;
+  font-size: 18px;
+  margin-right: 1cm;
+  background-color: #007bff;
+}
+.info-button-large:hover {
+  background-color: #4e7fb4;
+}
+
+.wallet-table thead {
+  position: sticky;
+  top: 0;
+  background-color: #f2f2f2;
+  z-index: 1;
+}
+.wallet-table th,
+.wallet-table td {
+  color: black;
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  table-layout: fixed; /* Fix table layout */
+}
+.wallet-table th, td, tbody tr:hover {
+  background-color: #4e7fb4;
+  cursor: pointer;
+}
 
 .info-container {
-    text-align: center;
-    padding: 20px;
-  }
-  
-  .info-title {
-    font-size: 2.5em;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  .info-title2 {
-    font-size: 2.5em;
-    color: #333;
-    margin-bottom: 20px;
-    font-size: 1.3em;
-  }
-  
-  .info-button {
-    padding: 12px 20px;
-    border-radius: 4px;
-    font-size: 16px;
-    background-color: #20b1ff;
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin: 5px;
-  }
-  
-  .info-button:hover {
-    background-color: #1b85e6;
-  }
-  .wallet-table tbody tr.hovered {
-    background-color: #f5f5f5; /* Schimbă aici culoarea dorită pentru rândul la hover */
-    cursor: pointer;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.info-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.info-title2 {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.info-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.info-button:hover {
+  background-color: #4e7fb4;
+}
+
+.info-button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.info-button:not(:last-child) {
+  margin-right: 10px;
+}
+
+.info-button:last-child {
+  margin-bottom: 20px;
+}
+

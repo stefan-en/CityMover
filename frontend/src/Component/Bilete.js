@@ -14,6 +14,15 @@ function Ticket() {
   const [, setShowDetails] = useState(false);
   const [pret, setPret] = useState(false);
   const Navigates = useNavigate();
+  var cookie_username = Cookies.get('username')
+
+  if (!cookie_username) {
+      
+    alert("Trebuie să fiți conectat pentru a cumpara un bilet.");
+    Navigates("/login");
+    return; 
+  }
+
 
   const boxes = [
     { id: 1, title: 'Abonament Lunar', description: 60, details: 'Valabilitate 30 zile', image: ticketImage1 },
@@ -25,40 +34,50 @@ function Ticket() {
   ];
 
   const toggleBoxSelection = (box) => {
-    // const cookie_username = Cookies.get('username');
-    // if (!cookie_username) {
-    //   alert('Trebuie să fiți conectat pentru a cumpăra un bilet.');
-    //   Navigates('/login');
-    //   return;
-    // }
     if (selectedBox && selectedBox.id === box.id) {
+      //console.log(selectedBox.description)
       setSelectedBox(null);
     } else {
       setSelectedBox(box);
+      //console.log(selectedBox.description)
     }
-    setPret((box.description/4.56).toFixed(2))
-    console.log(pret)
+    setPret((box.description / 4.56).toFixed(2));
   };
+  const capitalize = (word) => {
+    return word.charAt(0).toUpperCase() + word.slice(1);
+  }
+
+  const formatText = (text) => {
+    return text.split(' ').map((word) => capitalize(word)).join('_').toUpperCase();
+  }
 
   const handleBuyButtonClick = (event) => {
+  
     const cookie_username = Cookies.get('username');
-    event.preventDefault();
+    
+    console.log(cookie_username)
     const url = `http://localhost:8091/api/v1/service/user/${cookie_username}`;
-
+    console.log(url)
     fetch(url, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' }
     })
       .then((response) => response.json())
       .then((responseText) => {
+        console.log(responseText)
         const userId = responseText.id;
-
+        console.log(userId)
+        if (selectedBox) {
+          console.log(formatText(selectedBox.title));
+        } else {
+          console.log("Nu a fost selectat niciun bilet.");
+        }
         fetch('http://localhost:8080/api/v1/service/tickets/buy', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             idUser: userId,
-            type: selectedBox.title
+            type: formatText(selectedBox.title)
           })
         })
           .then((response) => {
@@ -67,13 +86,42 @@ function Ticket() {
               Navigates('/home');
             } else {
               alert('A apărut o eroare! Vă rugăm să încercați din nou mai târziu.');
-             Navigates('/tickets');
+              Navigates('/tickets');
             }
           })
           .catch((error) => {
             console.error('Eroare:', error);
           });
       });
+  };
+
+  const createOrder = (data, actions) => {
+    return actions.order.create({
+      purchase_units: [
+        {
+          amount: {
+            value: pret, // Set the ticket amount as the order value
+            currency_code: 'USD' // Set the currency code
+          }
+        }
+      ]
+    });
+  };
+
+  const onPaymentSuccess = (details, data) => {
+    console.log('Plată cu succes:', details);
+    // Process the successful payment and perform any necessary actions
+    handleBuyButtonClick(); // Call the buy ticket function after successful payment
+  };
+
+  const onPaymentError = (error) => {
+    console.error('Eroare de plată:', error);
+    // Handle the payment error
+  };
+
+  const onPaymentCancel = (data) => {
+    console.log('Plată anulată:', data);
+    // Handle the payment cancellation
   };
 
   return (
@@ -89,11 +137,16 @@ function Ticket() {
             {selectedBox && selectedBox.id === box.id && (
               <div className="details">
                 <PayPalButton
-                  amount={box.description}
-                  currency="USD"
-                  onSuccess={handleBuyButtonClick}
-                  onError={(error) => console.error('Eroare de plată:', error)}
-                  onCancel={() => console.log('Plată anulată')}
+                  createOrder={(data, actions) => createOrder(data, actions)}
+                  onSuccess={onPaymentSuccess}
+                  onError={onPaymentError}
+                  onCancel={onPaymentCancel}
+                  style={{
+                    color: 'blue', // Customize the button color here
+                    shape: 'rect', // Display the button as a rectangle
+                    label: 'checkout', // Change the button text here
+                    tagline: false // Disable the PayPal tagline
+                  }}
                 />
               </div>
             )}
